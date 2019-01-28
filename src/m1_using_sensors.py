@@ -286,6 +286,8 @@ def run_test_go_straight_until_black():
     # -------------------------------------------------------------------------
     # TODO: 13. Implement this test method, then implement the method it tests.
     # -------------------------------------------------------------------------
+    q = DriveSystem()
+    q.go_straight_until_black(75)
 
 def run_test_go_forward_until_distance_is_less_than():
     """ Tests the   go_forward_until_distance_is_less_than   method of DriveSystem. """
@@ -376,7 +378,7 @@ class DriveSystem(object):
         a black surface, as measured by the color sensor.
         """
         q = ColorSensor(3)
-        self.go(100, 100)
+        self.go(speed, speed)
         while True:
             if q.get_reflected_light_intensity() <=10:
                 self.stop()
