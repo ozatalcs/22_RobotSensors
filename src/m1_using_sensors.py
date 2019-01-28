@@ -17,7 +17,7 @@ import math
 # -----------------------------------------------------------------------------
 
 # -----------------------------------------------------------------------------
-# TODO 3:  With your instructor, do quiz questions 6 through XXX.
+# Done 3:  With your instructor, do quiz questions 6 through XXX.
 #          After you understand the answers to those questions,
 #          mark this _TODO_ as DONE.
 # -----------------------------------------------------------------------------
@@ -180,14 +180,14 @@ def run_test_go_straight_for_inches_using_sensor():
     drive_system.go_straight_for_inches_using_sensor(12, -50)
 
     # -------------------------------------------------------------------------
-    # TODO: 9.  With your instructor, implement the
+    # Done: 9.  With your instructor, implement the
     #      go_straight_for_inches_using_sensor    method of   DriveSystem.
     #      The tests are already written for you -- READ THEM (above).
     # -------------------------------------------------------------------------
 
 
 # -----------------------------------------------------------------------------
-# TODO 10:  With your instructor, do quiz questions XXX through XXX.
+# Done 10:  With your instructor, do quiz questions XXX through XXX.
 #          After you understand the answers to those questions,
 #          mark this _TODO_ as DONE.
 # -----------------------------------------------------------------------------
@@ -287,7 +287,6 @@ def run_test_go_straight_until_black():
     # TODO: 13. Implement this test method, then implement the method it tests.
     # -------------------------------------------------------------------------
 
-
 def run_test_go_forward_until_distance_is_less_than():
     """ Tests the   go_forward_until_distance_is_less_than   method of DriveSystem. """
     print()
@@ -376,7 +375,12 @@ class DriveSystem(object):
         Goes straight at the given speed until the robot is over
         a black surface, as measured by the color sensor.
         """
-        pass
+        q = ColorSensor(3)
+        self.go(100, 100)
+        while True:
+            if q.get_reflected_light_intensity() <=10:
+                self.stop()
+                break
 
     def go_forward_until_distance_is_less_than(self, inches, speed):
         """
@@ -425,7 +429,6 @@ class Motor(object):
 
     def reset_position(self):
         self._motor.position = 0
-
 
 class TouchSensor(object):
     def __init__(self, port):  # port must be 1, 2, 3 or 4
